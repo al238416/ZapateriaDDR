@@ -1,0 +1,501 @@
+<!--Carlos Humerto Chaidez Salcedo 236980-->
+<!--Ivan Alejandro Flores Gallardo 238416-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zapatos el Pollon</title>
+
+    <link rel="stylesheet" href="style.css">
+     <!-- 1. Enlace a la fuente de la tipografia-->
+  <link href="https://fonts.cdnfonts.com/css/cosmic-alien" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="encabezado">
+
+    <div class="marca">
+        <h1>Zapatos el Pollon</h1>
+        <p>Control de productos y ventas</p>
+    </div>
+
+</header>
+
+
+<main class="contenedor">
+
+    <!-- TÍTULO -->
+
+    <section class="titulo-principal">
+
+        <h2>Panel de administración</h2>
+
+        <p>
+            Consulta existencias, registra productos y lleva el control de las ventas.
+        </p>
+
+    </section>
+
+
+    <!-- RESUMEN -->
+
+    <section class="resumen">
+
+        <div class="resumen-item">
+            <span>Productos registrados</span>
+            <strong id="totalProductos">0</strong>
+        </div>
+
+        <div class="resumen-item">
+            <span>Pares disponibles</span>
+            <strong id="totalExistencias">0</strong>
+        </div>
+
+        <div class="resumen-item">
+            <span>Ventas registradas</span>
+            <strong id="totalVentas">0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- MENÚ -->
+
+    <nav class="menu">
+
+        <button
+            class="menu-boton activo"
+            data-panel="inventario">
+            Inventario
+        </button>
+
+        <button
+            class="menu-boton"
+            data-panel="registrarProducto">
+            Registrar producto
+        </button>
+
+        <button
+            class="menu-boton"
+            data-panel="registrarVenta">
+            Registrar venta
+        </button>
+
+        <button
+            class="menu-boton"
+            data-panel="ventas">
+            Ventas
+        </button>
+
+    </nav>
+
+
+    <!-- INVENTARIO -->
+
+    <section
+        id="inventario"
+        class="panel activo">
+
+        <div class="panel-encabezado">
+
+            <div>
+                <h3>Inventario</h3>
+
+                <p>
+                    Productos registrados actualmente en la zapatería.
+                </p>
+            </div>
+
+
+            <button
+                id="restablecer"
+                class="boton-secundario">
+
+                Recargar desde CSV
+
+            </button>
+
+        </div>
+
+
+        <div class="buscador">
+
+            <input
+                type="search"
+                id="buscarProducto"
+                placeholder="Buscar por código, marca o modelo">
+
+
+            <select id="filtroCategoria">
+
+                <option value="">
+                    Todas las categorías
+                </option>
+
+                <option value="Tenis">
+                    Tenis
+                </option>
+
+                <option value="Casual">
+                    Casual
+                </option>
+
+                <option value="Zapato">
+                    Zapato
+                </option>
+
+                <option value="Tacón">
+                    Tacón
+                </option>
+
+                <option value="Bota">
+                    Bota
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="tabla-contenedor">
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>Imagen</th>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Talla</th>
+                    <th>Precio</th>
+                    <th>Existencia</th>
+                </tr>
+
+                </thead>
+
+
+                <tbody id="tablaInventario">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- REGISTRAR PRODUCTO -->
+
+    <section
+        id="registrarProducto"
+        class="panel">
+
+        <h3>Registrar producto</h3>
+
+        <p class="descripcion">
+            Capture la información del nuevo producto.
+        </p>
+
+
+        <form
+            id="formProducto"
+            class="formulario">
+
+
+            <div class="campo">
+
+                <label for="codigo">
+                    Código
+                </label>
+
+                <input
+                    type="text"
+                    id="codigo"
+                    placeholder="Ej. Z026"
+                    required>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="marca">
+                    Marca
+                </label>
+
+                <input
+                    type="text"
+                    id="marca"
+                    placeholder="Ej. Nike"
+                    required>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="modelo">
+                    Modelo
+                </label>
+
+                <input
+                    type="text"
+                    id="modelo"
+                    placeholder="Ej. Air Max"
+                    required>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="categoria">
+                    Categoría
+                </label>
+
+                <select
+                    id="categoria"
+                    required>
+
+                    <option value="">
+                        Seleccione una categoría
+                    </option>
+
+                    <option value="Tenis">
+                        Tenis
+                    </option>
+
+                    <option value="Casual">
+                        Casual
+                    </option>
+
+                    <option value="Zapato">
+                        Zapato
+                    </option>
+
+                    <option value="Tacón">
+                        Tacón
+                    </option>
+
+                    <option value="Bota">
+                        Bota
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="talla">
+                    Talla (MX)
+                </label>
+
+                <input
+                    type="number"
+                    id="talla"
+                    min="1"
+                    step="0.5"
+                    required>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="precio">
+                    Precio (MXN)
+                </label>
+
+                <input
+                    type="number"
+                    id="precio"
+                    min="0"
+                    step="0.01"
+                    required>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="existencia">
+                    Existencia (pares)
+                </label>
+
+                <input
+                    type="number"
+                    id="existencia"
+                    min="0"
+                    required>
+
+            </div>
+
+
+            <div class="acciones-formulario">
+
+                <button
+                    type="submit"
+                    class="boton-principal">
+
+                    Guardar producto
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <p
+            id="mensajeProducto"
+            class="mensaje">
+        </p>
+
+    </section>
+
+
+    <!-- REGISTRAR VENTA -->
+
+    <section
+        id="registrarVenta"
+        class="panel">
+
+        <h3>Registrar venta</h3>
+
+        <p class="descripcion">
+            Seleccione un producto con existencia disponible.
+        </p>
+
+
+        <form
+            id="formVenta"
+            class="formulario-venta">
+
+
+            <div class="campo">
+
+                <label for="productoVenta">
+                    Producto disponible
+                </label>
+
+                <select
+                    id="productoVenta"
+                    required>
+
+                    <option value="">
+                        Seleccione un producto
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="campo">
+
+                <label for="cantidadVenta">
+                    Cantidad
+                </label>
+
+                <input
+                    type="number"
+                    id="cantidadVenta"
+                    min="1"
+                    value="1"
+                    required>
+
+            </div>
+
+
+            <div
+                id="informacionVenta"
+                class="informacion-venta">
+
+                Seleccione un producto para consultar sus datos.
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="boton-principal">
+
+                Registrar venta
+
+            </button>
+
+        </form>
+
+
+        <p
+            id="mensajeVenta"
+            class="mensaje">
+        </p>
+
+    </section>
+
+
+    <!-- VENTAS -->
+
+    <section
+        id="ventas"
+        class="panel">
+
+        <h3>Ventas registradas</h3>
+
+        <p class="descripcion">
+            Historial de ventas realizadas.
+        </p>
+
+
+        <div class="tabla-contenedor">
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>Folio</th>
+                    <th>Fecha</th>
+                    <th>Producto</th>
+                    <th>Talla</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                </tr>
+
+                </thead>
+
+
+                <tbody id="tablaVentas">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    Sistema de control de productos y ventas
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
